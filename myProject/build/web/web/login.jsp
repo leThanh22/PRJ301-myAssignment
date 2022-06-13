@@ -16,7 +16,7 @@
             <h1>FPT UNIVERSITY ACADEMIC PORTAL</h1>
         </div>
         <div>
-            <form>
+            <form action="login" method="POST">
                 Username: <input type="text" name="user"><br/>
                 PassWord: <input type="text" name="pass"><br/>
                 <input type="submit" value="login">
