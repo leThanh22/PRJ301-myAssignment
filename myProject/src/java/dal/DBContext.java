@@ -22,7 +22,7 @@ public abstract class DBContext<T> {
         try {
             String user = "sa";
             String pass = "12345678";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=HE150490_PRJ301";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=HE150490_PRJ301_SU22";
             Class.forName("com.microsoft.sqlsever.jdbc.SQLSeverDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException ex) {

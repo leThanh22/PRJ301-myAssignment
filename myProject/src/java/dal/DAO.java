@@ -18,32 +18,66 @@ import model.User;
  *
  * @author Admin
  */
-public class DAO extends DBContext{
+public class DAO extends DBContext<User>{
+
     public static void main(String[] args) {
         DAO d = new DAO();
-        User u = d.getUser("thanhlk147", "1234567");
-        System.out.println(u.getCodeUser());
+        User u = d.getUser("thanhlkhe150490@fpt.edu.vn", "12345678");
+        
     }
-    public User getUser(String userName, String pass){
-        String sql="select * from [User]\n" +
-"where username=? and pass=? ";
+
+    public User getUser(String userName, String pass) {
+        /*
+          public ArrayList<MyRect> getRectS(){
+        
+        ArrayList<MyRect> rects = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM drawRect";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                MyRect r = new MyRect();
+                r.setX(rs.getInt("x"));
+                r.setY(rs.getInt("y"));
+                r.setW(rs.getInt("w"));
+                r.setH(rs.getInt("h"));
+                rects.add(r);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try{
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return rects;
+         */
+        String sql = "select * from Account\n"
+                + "where email=? and password=? ";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, userName);
             st.setString(2, pass);
             ResultSet rs = st.executeQuery();
-            if(rs.next()){
-                ClassRoom c = new ClassRoom(rs.getInt(6), "");
-                Subject s = new Subject(rs.getInt(8), "");
-                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), c, rs.getString(7), s);
-                 return u;
+            if (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt(0));
+                u.setName(rs.getString(1));
+                u.setPass(rs.getString(2));
+                u.setRole(rs.getInt(3));
+                u.setEmail(rs.getString(4));
+                return u;
             }
-           
+
         } catch (SQLException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
+
     @Override
     public ArrayList<User> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -54,21 +88,19 @@ public class DAO extends DBContext{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-   
-
     @Override
-    public void insert(Object model) {
+    public void insert(User model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void update(Object model) {
+    public void update(User model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Object model) {
+    public void delete(User model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

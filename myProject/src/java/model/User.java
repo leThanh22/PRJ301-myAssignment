@@ -10,26 +10,20 @@ package model;
  */
 public class User {
     private int id;
-    private String userName;
+    private String name;
     private String pass;
-    private String fullname;
-    private String codeUser;
-    private ClassRoom classId;
-    private String image;
-    private Subject subjectId;
+    private String email;
+    private int role;
 
     public User() {
     }
 
-    public User(int id, String userName, String pass, String fullname, String codeUser, ClassRoom classId, String image, Subject subjectId) {
+    public User(int id, String name, String pass, String email, int role) {
         this.id = id;
-        this.userName = userName;
+        this.name = name;
         this.pass = pass;
-        this.fullname = fullname;
-        this.codeUser = codeUser;
-        this.classId = classId;
-        this.image = image;
-        this.subjectId = subjectId;
+        this.email = email;
+        this.role = role;
     }
 
     public int getId() {
@@ -40,12 +34,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPass() {
@@ -56,44 +50,21 @@ public class User {
         this.pass = pass;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCodeUser() {
-        return codeUser;
+    public int getRole() {
+        return role;
     }
 
-    public void setCodeUser(String codeUser) {
-        this.codeUser = codeUser;
+    public void setRole(int role) {
+        this.role = role;
     }
 
-    public ClassRoom getClassId() {
-        return classId;
-    }
-
-    public void setClassId(ClassRoom classId) {
-        this.classId = classId;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Subject getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(Subject subjectId) {
-        this.subjectId = subjectId;
-    }
     
 }
