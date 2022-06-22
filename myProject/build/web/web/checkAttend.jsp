@@ -7,7 +7,7 @@
     </style>
     <body>
 
-        <h2>Check Attendent</h2>
+        <h2>Check Attendence</h2>
 
         <table style="width:100%">
             <tr>

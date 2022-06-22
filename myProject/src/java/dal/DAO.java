@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.ClassRoom;
-import model.Subject;
 import model.User;
 
 /**
@@ -22,7 +20,7 @@ public class DAO extends DBContext<User>{
 
     public static void main(String[] args) {
         DAO d = new DAO();
-        User u = d.getUser("thanhlkhe150490@fpt.edu.vn", "12345678");
+        User u = d.getUser("thanhlkhe150490", "12345678");
         
     }
 
@@ -56,7 +54,7 @@ public class DAO extends DBContext<User>{
         return rects;
          */
         String sql = "select * from Account\n"
-                + "where email=? and password=? ";
+                + "where name=? and password=? ";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, userName);

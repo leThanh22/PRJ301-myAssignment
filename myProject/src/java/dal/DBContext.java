@@ -20,9 +20,10 @@ public abstract class DBContext<T> {
     protected Connection connection;
     public DBContext(){
         try {
+            
             String user = "sa";
             String pass = "12345678";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=HE150490_PRJ301_SU22";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=HE150490_PRJ301_SM22";
             Class.forName("com.microsoft.sqlsever.jdbc.SQLSeverDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException ex) {

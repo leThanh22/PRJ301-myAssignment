@@ -4,12 +4,14 @@
  */
 package controller;
 
+import dal.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.User;
 
 /**
  *
@@ -56,7 +58,7 @@ public class LoginSeverlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.sendRedirect("web/login.jsp");
+       request.getRequestDispatcher("web/login.jsp").forward(request, response);
     }
 
     /**
@@ -70,7 +72,21 @@ public class LoginSeverlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String user = request.getParameter("user");
+         String pass =  request.getParameter("pass");
+         dal.DAO d = new DAO();
+        User user1 = d.getUser(user, pass);
+        if(user1 == null){
+            
+        if(user1.getRole() == 0){
+            request.getRequestDispatcher("web/forTeacher.jsp").forward(request, response);
+        }
+        else{
+             request.getRequestDispatcher("web/forStudent.jsp").forward(request, response);
+        }}
+        else{
+            response.getWriter().println("LOgin failse");
+        }
     }
 
     /**
