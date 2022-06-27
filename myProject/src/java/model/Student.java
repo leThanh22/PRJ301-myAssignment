@@ -12,13 +12,13 @@ public class Student {
     private int id;
     private String sname;
     private String code;
-    private int gid;
+    private Group gid;
     private String images;
 
     public Student() {
     }
 
-    public Student(int id, String sname, String code, int gid, String images) {
+    public Student(int id, String sname, String code, Group gid, String images) {
         this.id = id;
         this.sname = sname;
         this.code = code;
@@ -26,6 +26,7 @@ public class Student {
         this.images = images;
     }
 
+ 
     public int getId() {
         return id;
     }
@@ -50,13 +51,16 @@ public class Student {
         this.code = code;
     }
 
-    public int getGid() {
+    public Group getGid() {
         return gid;
     }
 
-    public void setGid(int gid) {
+    public void setGid(Group gid) {
         this.gid = gid;
     }
+
+   
+    
 
     public String getImages() {
         return images;

@@ -11,16 +11,18 @@ package model;
 public class Group {
     private int id;
     private String gname;
-    private int cid;
+    private Course cid;
 
     public Group() {
     }
 
-    public Group(int id, String gname, int cid) {
+    public Group(int id, String gname, Course cid) {
         this.id = id;
         this.gname = gname;
         this.cid = cid;
     }
+
+   
 
     public int getId() {
         return id;
@@ -38,13 +40,14 @@ public class Group {
         this.gname = gname;
     }
 
-    public int getCid() {
+    public Course getCid() {
         return cid;
     }
 
-    public void setCid(int cid) {
+    public void setCid(Course cid) {
         this.cid = cid;
     }
-    
+
+   
      
 }

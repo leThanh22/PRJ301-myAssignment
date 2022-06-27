@@ -13,20 +13,22 @@ import java.sql.Date;
 public class Status {
     private int id;
     private String stname;
-    private int sid;
-    private int lid;
+    private Student sid;
+    private Lesson lid;
     private Date recordtime;
 
     public Status() {
     }
 
-    public Status(int id, String stname, int sid, int lid, Date recordtime) {
+    public Status(int id, String stname, Student sid, Lesson lid, Date recordtime) {
         this.id = id;
         this.stname = stname;
         this.sid = sid;
         this.lid = lid;
         this.recordtime = recordtime;
     }
+
+   
 
     public int getId() {
         return id;
@@ -44,19 +46,19 @@ public class Status {
         this.stname = stname;
     }
 
-    public int getSid() {
+    public Student getSid() {
         return sid;
     }
 
-    public void setSid(int sid) {
+    public void setSid(Student sid) {
         this.sid = sid;
     }
 
-    public int getLid() {
+    public Lesson getLid() {
         return lid;
     }
 
-    public void setLid(int lid) {
+    public void setLid(Lesson lid) {
         this.lid = lid;
     }
 
@@ -67,5 +69,6 @@ public class Status {
     public void setRecordtime(Date recordtime) {
         this.recordtime = recordtime;
     }
-    
+
+   
 }

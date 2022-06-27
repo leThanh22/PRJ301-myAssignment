@@ -4,9 +4,25 @@
         <servlet-name>LoginSeverlet</servlet-name>
         <servlet-class>controller.LoginSeverlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckAttendenceOfTeacherServlet</servlet-name>
+        <servlet-class>controller.CheckAttendenceOfTeacherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckAttendenceOfStudentServlet</servlet-name>
+        <servlet-class>controller.CheckAttendenceOfStudentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginSeverlet</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckAttendenceOfTeacherServlet</servlet-name>
+        <url-pattern>/checkTeacher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckAttendenceOfStudentServlet</servlet-name>
+        <url-pattern>/checkStudent</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

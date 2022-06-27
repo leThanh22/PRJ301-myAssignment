@@ -11,13 +11,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.User;
+import java.util.List;
+import model.Lesson;
 
 /**
  *
  * @author Admin
  */
-public class LoginSeverlet extends HttpServlet {
+public class CheckAttendenceOfTeacherServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +37,10 @@ public class LoginSeverlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginSeverlet</title>");            
+            out.println("<title>Servlet CheckAttendenceOfTeacherServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginSeverlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CheckAttendenceOfTeacherServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,8 +58,10 @@ public class LoginSeverlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-       request.getRequestDispatcher("web/login.jsp").forward(request, response);
+        DAO d = new DAO();
+        List<Lesson> listL = d.getAllLesson();
+        request.setAttribute("listL", listL);
+        request.getRequestDispatcher("web/forTeacher.jsp").forward(request, response);
     }
 
     /**
@@ -72,21 +75,7 @@ public class LoginSeverlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-         String pass =  request.getParameter("pass");
-         dal.DAO d = new DAO();
-        User user1 = d.getUser(user, pass);
-        if(user1 != null){
-        if(user1.getRole() == 0){
-            response.sendRedirect("checkTeacher");
-        }
-        else{
-             request.getRequestDispatcher("web/forStudent.jsp").forward(request, response);
-        }}
-        else{
-            response.getWriter().println("Login failse");
-            response.sendRedirect("web/login.jsp");
-        }
+        processRequest(request, response);
     }
 
     /**
