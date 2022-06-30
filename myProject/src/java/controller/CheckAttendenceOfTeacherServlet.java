@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import model.Lesson;
 
@@ -59,7 +60,14 @@ public class CheckAttendenceOfTeacherServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO d = new DAO();
-        List<Lesson> listL = d.getAllLesson();
+        List<Lesson> listL = new ArrayList<>();
+        String slot_raw = request.getParameter("subject");
+        int slot = 0;
+        try {
+            slot=Integer.parseInt(slot_raw);
+        } catch (Exception e) {
+        }
+        listL = d.getLessonByTid(slot);
         request.setAttribute("listL", listL);
         request.getRequestDispatcher("web/forTeacher.jsp").forward(request, response);
     }

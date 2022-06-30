@@ -16,25 +16,18 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public abstract class DBContext<T> {
+
+public class DBContext{
     protected Connection connection;
     public DBContext(){
         try {
-            
-            String user = "sa";
-            String pass = "12345678";
             String url = "jdbc:sqlserver://localhost:1433;databaseName=HE150490_PRJ301_SM22";
-            Class.forName("com.microsoft.sqlsever.jdbc.SQLSeverDriver");
-            connection = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+            String username="sa";
+            String password="12345678";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex);
         }
     }
-    public abstract ArrayList<T> list();
-    public abstract T get(int id);
-    public abstract void insert(T model);
-    public abstract void update(T model);
-    public abstract void delete(T model);
 }
